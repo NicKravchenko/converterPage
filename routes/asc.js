@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     const mode = req.body.mode ? req.body.mode : "charToAsc";
-    const asc = 3;
-    const char = 'A';
+    const asc = '';
+    const char = '';
     console.log("Im in main");
     res.render('Pages/asc', {
         title : 'Asc convertor',
@@ -18,9 +18,6 @@ router.get('/', (req, res, next) => {
 router.post('/changeMode', (req, res, next) => {
     const mode = req.body.mode;
 
-    console.log("Im in change mod");
-
-
     res.render("Pages/asc",{
         title : 'Asc convertor',
         mode: mode,
@@ -31,7 +28,6 @@ router.post('/changeMode', (req, res, next) => {
 
 router.post('/ascToChar', (req, res, next) => {
     const mode = req.body.mode;
-    console.log ( mode);
     const asc = req.body.asc;
     const char = String.fromCharCode(asc);
 
@@ -39,9 +35,21 @@ router.post('/ascToChar', (req, res, next) => {
         title : 'Asc convertor',
         mode: mode,
         asc : asc,
+        char : `${asc} => ${char}`
+        });
+});
+
+router.post('/charToAsc', (req, res, next) => {
+    const mode = req.body.mode;
+    const char = req.body.char;
+    const asc = char.charCodeAt(0);
+
+    res.render("Pages/asc",{
+        title : 'Asc convertor',
+        mode: mode,
+        asc : `${char} => ${asc}`,
         char : char
         });
-
 })
 
 
