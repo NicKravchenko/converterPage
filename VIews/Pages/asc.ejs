@@ -2,5 +2,15 @@
 
 <body>
     <h1>asc convertor</h1>
+    <p>mode <%=mode%></p>
+    <form action="/asc/changeMode" method="POST">
+        <input type="hidden" name="mode" id="mode" value="<%if (mode === 'ascToChar'){%>charToAsc<%}else{%>ascToChar<%}%>">
+        <button type="submit"><=></button>
+    </form>
+    <%if (mode === "ascToChar")%>
+    <!-- <form action="">
+        <label for="ascCode">Asc code</label>
+        <input type="text" id="ascCode" name="ascCode">
+    </form> -->
 </body>
 </html>
